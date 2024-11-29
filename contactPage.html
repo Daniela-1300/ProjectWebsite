@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+    <html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: #fff;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 80vh;
+            background-color: #f4f4f4;
+            padding: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 500px;
+            gap: 15px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #555;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        #index{
+            color:rgb(74, 135, 240);
+        }
+        #about{
+            color: rgb(74, 135, 240);
+        }
+        #contact{
+            color: rgb(74, 135, 240);
+        }
+        #social{
+            color: rgb(74, 135, 240);
+        }
+
+        footer a:hover {
+            background-color: #ddd;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contact Me</h1>
+    </header>
+    <nav>
+        <a href="index.html" aria-label="Go to Home Page">Home</a>
+        <a href="aboutPage.html" aria-label="Learn more About Me">About Me</a>
+        <a href="contactPage.html" aria-label="Go to Contact Page">Contact</a>
+    </nav>
+    <div class="content">    <!---Form--->
+        <form class="contact-form" id="contactForm">
+            <input type="text" placeholder="Your Name" required name="name">
+            <input type="email" placeholder="Your Email" required name="email">
+            <textarea placeholder="Your Message" rows="6" required name="message"></textarea> 
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 Daniela My Website</p>
+        <a href="index.html" id="index" aria-label="Go to Home Page" >Home</a>
+        <a href="aboutPage.html" id="about" aria-label="Learn more About Me">About Me</a>
+        <a href="contactPage.html" id="contact" aria-label="Go to Contact Page">Contact</a>
+        <a href="https://www.linkedin.com/in/daniela-paez-rodr%C3%ADguez-927159269/" id="social">LinkedIn</a>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch('https://formspree.io/f/mbljgezl', {    //Stores submissions
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    alert('Email sent successfully!'); // Alert message
+                    this.reset(); // Reset the form
+                } else {
+                    alert('Error sending email.'); // Alert for error
+                }
+            })
+            .catch(error => {
+                alert('Error sending email.'); // Alert for fetch error
+            });
+        });
+
+    </script>
+
+<script>
+    // Array of colors to cycle through
+    const colors = ['#D3D3D3', '#808080', '#505050', '#F8F9FA', '#708090'];
+    
+    // Variable to keep track of the current index
+    let currentIndex = 0;
+
+    // Select the content container
+    const content = document.querySelector('.content');
+
+    // Add click event listener to the content container
+    content.addEventListener('click', function() {
+        // Set the background color to the current color in the list
+        content.style.backgroundColor = colors[currentIndex];
+
+        // Increment the index and reset it if it exceeds the array length
+        currentIndex = (currentIndex + 1) % colors.length;
+    });
+        </script>
+
+</body>
+</html>

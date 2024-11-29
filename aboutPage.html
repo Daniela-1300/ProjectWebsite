@@ -1,0 +1,170 @@
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: #fff;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .content { 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 80vh;
+            background-color: #f4f4f4;
+            padding: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            max-width: 800px;
+            margin: 20px;
+        
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .text-container {
+            max-width: 400px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        #index{
+            color:rgb(74, 135, 240);
+        }
+        #about{
+            color: rgb(74, 135, 240);
+        }
+        #contact{
+            color: rgb(74, 135, 240);
+        }
+        #social{
+            color: rgb(74, 135, 240);
+        }
+
+        footer a:hover {
+            background-color: #ddd;
+        }
+
+
+        .image-container img:hover {
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+
+        /* Style for the pop-up */
+        .popup {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+            max-width: 200px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Me</h1>
+    </header>
+    <nav>
+        <a href="index.html" aria-label="Go to Home Page">Home</a>
+        <a href="aboutPage.html" aria-label="Learn more About Me">About Me</a>
+        <a href="contactPage.html" aria-label="Go to Contact Page">Contact</a>
+    </nav>
+    <div class="content">       <!--Content of page-->
+        <div class="container">  <!--Container for content organization-->
+            <div class="image-container">   
+                <img src="headshot.jpeg" alt="Headshot Image" width="300" height="300" id="myImage">
+            </div>
+            <div class="text-container">
+                <h2>About Myself</h2>
+                <p>My name is Daniela Paez Rodriguez. I am a Business Technology Management student at Toronto Metropolitan University. I am passionate about applying technology to solve business problems and create value. I am passionate about leveraging technology to solve business problems and create value. I have completed several courses and certifications in Excel, SQL, Business analysis, and Python. Thanks to my past-work roles, I have gained hands-on experience in managing data to find solutions. I look forward to future opportunities where I can further develop my skills and apply my knowledge to data-driven challenges. </p>
+            </div>
+        </div>
+    </div>
+      </script>
+      <script>  //mouse hover
+        const image2 = document.getElementById('myImage');
+        const popup = document.getElementById('popupText');
+
+        image.addEventListener('mouseenter', function() {
+            popup.style.display = 'block'; // Show the popup
+        });
+
+        image.addEventListener('mouseleave', function() {
+            popup.style.display = 'none'; // Hide the popup
+        });
+      </script>
+    <script>
+        // Select the content container
+        const content = document.querySelector('.content');
+
+        // Define a list of colors to cycle through
+        const colors = ['#D3D3D3', '#808080', '#505050', '#F8F9FA', '#708090'];
+        let currentIndex = 0;
+
+        // Add a click event listener to the content
+        content.addEventListener('click', function (event) {
+            // Check if the clicked element is NOT an image
+            if (event.target.tagName !== 'IMG') {
+                // Change the background color
+                currentIndex = (currentIndex + 1) % colors.length; // Cycle through colors
+                content.style.backgroundColor = colors[currentIndex];
+            }
+        });
+
+        // Add a click event to the image to show its alt text
+        const image = document.getElementById("myImage");
+        image.addEventListener("click", function () {
+            alert(image.alt);
+        });
+    </script>
+    <footer>
+        <p>&copy; 2024 Daniela My Website</p>
+        <a href="index.html" id="index" aria-label="Go to Home Page">Home</a>
+        <a href="aboutPage.html" id="about" aria-label="Learn more About Me">About Me</a>
+        <a href="contactPage.html" id="contact" aria-label="Go to Contact Page">Contact</a>
+        <a href="https://www.linkedin.com/in/daniela-paez-rodr%C3%ADguez-927159269/" id="social">LinkedIn</a>
+    </footer>
+</body>
+</html>
